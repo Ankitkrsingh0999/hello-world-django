@@ -6,7 +6,7 @@ services:
     image: postgres:9.5
 
     volumes:
-      - data
+      - data::/var/lib/postgresql/data
     volumes:
       - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ./backups/postgresql:/backup
@@ -23,9 +23,7 @@ services:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - /Users/timam/Documents/MyProjects/hlwdj/projectile:/code
-    # volumes:
-    #   - ./:/projectile
+      - ./projectile:/code
     ports:
       - "8000:8000"
     depends_on:
@@ -33,5 +31,6 @@ services:
 
 volumes:
   projectile: 
+  data:
 
   
