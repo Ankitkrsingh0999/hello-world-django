@@ -1,9 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('test') {
+    stage('build') {
       steps {
-        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        echo "Building virtualenv"
+        sh ''' pip install -r requirements/dev.txt '''
       }
     }
   }
