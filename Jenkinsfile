@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       steps {
         echo "Building virtualenv"
-        sh ''' pip install -r requirements/dev.txt '''
+        sh ''' python3-pip install -r requirements/dev.txt '''
       }
     }
   }
